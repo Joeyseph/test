@@ -38,6 +38,7 @@ body{
    
 }
 
+
 .box{
     position:relative;
     font-size: 30px;
@@ -64,8 +65,9 @@ body{
 }
 
 .modal {
-  background-color: #fff;
-  border-radius: 5px;
+  background-color: rgb(221, 243, 255);
+  opacity: 0.7;
+  border-radius: 15px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   position: absolute;
   overflow: hidden;
@@ -74,21 +76,45 @@ body{
   transform: translate(-50%, -50%);
   max-width: 100%;
   width: 400px;
+  height: 450px;
+  text-align:center;
   animation-name: modalopen;
   animation-duration: var(--modal-duration);
 }
 
 .modal-header {
   background: var(--primary-color);
-  color: #fff;
-  padding: 15px;
+  text-align:center;
 }
 
 .modal-header h3 {
   margin: 0;
-  border-bottom: 1px solid #333;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  text-align:center;
+  top: 40px;
+  color: rgb(80, 109, 126);
 }
-
+.id{
+    margin-top: 25%;	 
+		border: 0px; 
+		border-radius: 20px; 
+		width: 180px;
+		height: 70px;
+    background-color: rgb(114, 90, 114);
+    color:white;
+		cursor: pointer;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 120%;
+}
+.close-btn {
+  background: transparent;
+  font-size: 20px;
+  position: absolute;
+  color:rgb(87, 133, 121);
+  top: 0;
+  right: 0;
+}
 
 /*flash*/
 @keyframes avatar{
