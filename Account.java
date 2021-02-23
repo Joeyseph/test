@@ -1,13 +1,28 @@
+import java.sql.SQLException;
+import java.sql.Connection;
+import java.sql.DriverManager;
+
 public class Account {
 
+public static void main(String args[]) throws SQLException {
+
+      DB_Interface db = new DB_Interface();// Creates an object to connect to the server
+		System.out.println(db.getStudentID("John", "Doe"));// Example as to how to use the DB_Interface file
+}
+
+
+
+
 //Instance variables
+
  private int studentID;
  private String firstName;
  private String lastName;
  private int correctAnswers;
  private int totalQuestions;
  private double percentCorrect;
-
+ private int scores[];
+ private double score;
  
  //Constructors
  public Account() {
@@ -18,13 +33,36 @@ public class Account {
   percentCorrect = 0.0;
  }
  
- public Account(String newFirstName, String newLastName) {
-   firstName = newFirstName;
-   lastName = newLastName;
+ public Account(String newFirstName, String newLastName) throws SQLException {
+   DB_Interface db = new DB_Interface();
+   //If account is new it creates a new account in the database
+   if(db.getStudentID(newFirstName, newLastName) == -1){
+   addAccount(newFirstName, newLastName);
    correctAnswers = 0;
    totalQuestions = 0;
    percentCorrect = 0.0;
+   }
+   
+   else{
+   studentID = db.getStudentID(newFirstName, newLastName);
+   scores = db.getStudentResults(studentID);
+   firstName = newFirstName;
+   lastName = newLastName;
+   }
  }
+ 
+ 
+//Database Methods
+public void addAccount(String first, String last) throws SQLException {
+   DB_Interface db = new DB_Interface();
+   db.addStudent(first, last);
+}
+
+public void addScoresDB() throws SQLException {
+   DB_Interface db = new DB_Interface();
+   db.addResult(this.studentID, this.score);
+   
+}
  
  //Accessors
  
